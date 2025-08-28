@@ -1,7 +1,5 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
-import { DashboardHeader } from "@/components/dashboard/dashboard-header"
-import { DashboardSidebar } from "@/components/dashboard/dashboard-sidebar"
 import { AdvancedSearch } from "@/components/search/advanced-search"
 
 interface SearchParams {
@@ -90,21 +88,13 @@ export default async function SearchPage({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <DashboardSidebar />
-      <div className="lg:pl-64">
-        <DashboardHeader user={user} />
-        <main className="p-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="mb-8">
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Búsqueda Avanzada</h1>
-              <p className="text-gray-600">Encuentra estudiantes y familias usando filtros específicos</p>
-            </div>
-
-            <AdvancedSearch initialResults={filteredResults} initialParams={params} />
-          </div>
-        </main>
+    <div className="max-w-7xl mx-auto">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Búsqueda Avanzada</h1>
+        <p className="text-gray-600">Encuentra estudiantes y familias usando filtros específicos</p>
       </div>
+
+      <AdvancedSearch initialResults={filteredResults} initialParams={params} />
     </div>
   )
 }

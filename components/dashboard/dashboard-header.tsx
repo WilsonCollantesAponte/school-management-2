@@ -11,7 +11,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Bell, Menu, LogOut, Settings, Search } from "lucide-react"
+import { Bell, LogOut, Settings, Search } from "lucide-react"
+import { SidebarTrigger } from "@/components/ui/sidebar"
 import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -53,9 +54,7 @@ export function DashboardHeader({ user }: DashboardHeaderProps) {
     <header className="bg-white shadow-sm border-b border-gray-200">
       <div className="flex items-center justify-between px-6 py-4">
         <div className="flex items-center">
-          <Button variant="ghost" size="sm" className="lg:hidden mr-2">
-            <Menu className="h-5 w-5" />
-          </Button>
+          <SidebarTrigger className="mr-2" />
           <h2 className="text-lg font-semibold text-gray-900">Dashboard</h2>
         </div>
 

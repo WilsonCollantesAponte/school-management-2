@@ -1,7 +1,5 @@
 import { redirect, notFound } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
-import { DashboardHeader } from "@/components/dashboard/dashboard-header"
-import { DashboardSidebar } from "@/components/dashboard/dashboard-sidebar"
 import { FamilyRecordForm } from "@/components/forms/family-record-form"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -56,33 +54,25 @@ export default async function EditStudentPage({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <DashboardSidebar />
-      <div className="lg:pl-64">
-        <DashboardHeader user={user} />
-        <main className="p-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="mb-8">
-              <div className="flex items-center gap-4">
-                <Button asChild variant="outline" size="sm">
-                  <Link href={`/dashboard/students/${id}`}>
-                    <ArrowLeft className="h-4 w-4 mr-2" />
-                    Volver
-                  </Link>
-                </Button>
-                <div>
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2">Editar Ficha Familiar</h1>
-                  <p className="text-gray-600">
-                    {student.nombres} {student.apellido_paterno} {student.apellido_materno}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <FamilyRecordForm existingData={existingData} isEditing={true} />
+    <div className="max-w-6xl mx-auto">
+      <div className="mb-8">
+        <div className="flex items-center gap-4">
+          <Button asChild variant="outline" size="sm">
+            <Link href={`/dashboard/students/${id}`}>
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Volver
+            </Link>
+          </Button>
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Editar Ficha Familiar</h1>
+            <p className="text-gray-600">
+              {student.nombres} {student.apellido_paterno} {student.apellido_materno}
+            </p>
           </div>
-        </main>
+        </div>
       </div>
+
+      <FamilyRecordForm existingData={existingData} isEditing={true} />
     </div>
   )
 }
